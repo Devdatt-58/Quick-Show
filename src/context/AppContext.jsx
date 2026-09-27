@@ -50,14 +50,14 @@ export const AppProvider = ({children}) =>{
         }
     }
 
-    const fetchFavoriteMovies = async ()=>{
+    const fetchFavoriteMovies =  async ()=>{
         try{
             const token = await getToken();
             const {data} = await axios.get('/api/user/favorites',{headers: {Authorization: `Bearer ${token}`}});
             if(data.success){
-                setFavoriteMovies(data.movies);
+                setFavoriteMovies(data.movies); 
             }else{
-                toast.error(data.message);
+                  toast.error(data.message);
             }
         }catch(error){
             console.error(error);
